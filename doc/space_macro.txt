@@ -6,7 +6,7 @@
 1. Usage                                                  |space-macro-usage|
 2. Customize mappings                                     |space-macro-mappings|
 
-================================================================================
+==============================================================================
 1. USAGE ~
                                                              *space-macro-usage*
 
@@ -22,12 +22,12 @@ selection even they are not a full word. For example, selecting 'foo' and then
 highlighting it will match the 'foo' in 'foobar'.
 
 
-================================================================================
+==============================================================================
 2. CUSTOMIZE MAPPINGS ~
                                                           *space-macro-mappings*
 
-You can customize mappings by adding and customizing the following lines in your
-.vimrc:
+You can customize mappings by adding and customizing the following lines in
+your .vimrc file:
 
 >
   " The key combination that enables highlighting.
