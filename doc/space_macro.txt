@@ -1,0 +1,42 @@
+*space_macro.txt*      The Space Macro, for quick highlights       *space-macro*
+
+
+                             SPACE MACRO MANUAL
+
+1. Usage                                                  |space-macro-usage|
+2. Customize mappings                                     |space-macro-mappings|
+
+================================================================================
+1. USAGE ~
+                                                             *space-macro-usage*
+
+In normal mode, press <space> (the space key) to highlight the word under
+your cursor. It relies on vim's search feature, so you can jump to the next
+occurence of the highlighted word using N, etc. Note that it will only match
+other occurences of the same exact word. For example, highlighting 'foo'
+wouldn't match 'foobar' (try it!).
+
+In visual mode (when you are selecting text), press <space> to highglight your
+selection. Note that in this case, it will match other occurences of your
+selection even they are not a full word. For example, selecting 'foo' and then
+highlighting it will match the 'foo' in 'foobar'.
+
+
+================================================================================
+2. CUSTOMIZE MAPPINGS ~
+                                                          *space-macro-mappings*
+
+You can customize mappings by adding and customizing the following lines in your
+.vimrc:
+
+>
+  " The key combination that enables highlighting.
+  let g:space_macro_on = '<space>'
+
+  " The key combination that disables highlighting.
+  let g:space_macro_off = '<leader><space>'
+<
+
+Leaving one of those variables empty will disable the keybinding.
+
+" vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=help norl:
