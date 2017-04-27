@@ -13,3 +13,5 @@ let g:space_macro_on = '<space>'
 let g:space_macro_off = '<leader><space>'
 ```
 in your .vimrc.
+
+See [the documentation](doc/space_macro.txt).
