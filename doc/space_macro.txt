@@ -5,6 +5,7 @@
 
 1. Usage                                                  |space-macro-usage|
 2. Customize mappings                                     |space-macro-mappings|
+3. Customize matching                                     |space-macro-matching|
 
 ==============================================================================
 1. USAGE ~
@@ -12,15 +13,10 @@
 
 In normal mode, press <space> (the space key) to highlight the word under
 your cursor. It relies on vim's search feature, so you can jump to the next
-occurence of the highlighted word using N, etc. Note that it will only match
-other occurences of the same exact word. For example, highlighting 'foo'
-wouldn't match 'foobar' (try it!).
+occurence of the highlighted word using N, etc.
 
 In visual mode (when you are selecting text), press <space> to highglight your
-selection. Note that in this case, it will match other occurences of your
-selection even they are not a full word. For example, selecting 'foo' and then
-highlighting it will match the 'foo' in 'foobar'.
-
+selection.
 
 ==============================================================================
 2. CUSTOMIZE MAPPINGS ~
@@ -38,5 +34,24 @@ your .vimrc file:
 <
 
 Leaving one of those variables empty will disable the keybinding.
+
+==============================================================================
+2. CUSTOMIZE MATCHING ~
+                                                          *space-macro-matching*
+
+In normal mode, by default, pressing space will only match occurences of the
+same word. For example, highlighting 'foo' wouldn't match 'foobar'. This can be
+changed in your .vimrc file:
+
+>
+  " Highlighting 'foo' won't match 'foobar'. The default.
+  let g:space_macro_match_word_only = 1
+
+  " Hihglighting 'foo' will match 'foobar'.
+  let g:space_macro_match_word_only = 0
+>
+
+In visual mode, word matching is always disabled: selecting 'foo' and then
+highlighting it will match the 'foo' in 'foobar'.
 
 " vim: set expandtab sts=2 ts=2 sw=2 tw=78 ft=help norl:

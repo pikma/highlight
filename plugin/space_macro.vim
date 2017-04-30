@@ -1,7 +1,22 @@
+
+if !exists('g:space_macro_on')
+  let g:space_macro_on = '<space>'
+endif
+
+if !exists('g:space_macro_off')
+  let g:space_macro_off = '<leader><space>'
+endif
+
+if !exists('g:space_macro_match_word_only')
+  let g:space_macro_match_word_only = 1
+endif
+
 " Returns the search pattern that will find the current word.
 function! SearchPatternFromCurrentWord()
   let word_under_cursor = expand('<cword>')
-  return '\C\V\<'.escape(word_under_cursor, '\').'\>'
+  let prefix = g:space_macro_match_word_only != 0 ? '\<' : ''
+  let suffix = g:space_macro_match_word_only != 0 ? '\>' : ''
+  return '\C\V'.prefix.escape(word_under_cursor, '\').suffix
 endfunction
 
 " Returns the currently selected text.
@@ -18,14 +33,6 @@ endfunction
 function! SearchPatternFromSelection()
   return '\V'.escape(GetVisualSelection(), '\')
 endfunction
-
-if !exists('g:space_macro_on')
-  let g:space_macro_on = '<space>'
-endif
-
-if !exists('g:space_macro_off')
-  let g:space_macro_off = '<leader><space>'
-endif
 
 if g:space_macro_on != ''
   execute "nnoremap" g:space_macro_on ":set hls<cr>:let @/=SearchPatternFromCurrentWord()<cr>"
