@@ -1,4 +1,3 @@
-
 if !exists('g:space_macro_on')
   let g:space_macro_on = '<space>'
 endif
@@ -26,12 +25,15 @@ function! GetVisualSelection()
   let lines = getline(lnum1, lnum2)
   let lines[-1] = lines[-1][: col2 - 1]
   let lines[0] = lines[0][col1 - 1:]
-  return join(lines, "\n")
+  for i in range(len(lines))
+      let lines[i] = escape(lines[i], '\')
+  endfor
+  return join(lines, '\n')
 endfunction
 
 " Returns the search patter that will match the current selection.
 function! SearchPatternFromSelection()
-  return '\V'.escape(GetVisualSelection(), '\')
+  return '\V'.GetVisualSelection()
 endfunction
 
 if g:space_macro_on != ''
